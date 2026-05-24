@@ -1,0 +1,421 @@
+:root {
+  --ink: #172121;
+  --muted: #596866;
+  --paper: #f5f1e9;
+  --white: #ffffff;
+  --green: #2d6655;
+  --gold: #b87928;
+  --red: #b3432e;
+  --line: #d8ded8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: #d9ded8;
+  color: var(--ink);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+.deck {
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+}
+
+.page {
+  position: relative;
+  width: 297mm;
+  height: 210mm;
+  padding: 15mm 17mm;
+  overflow: hidden;
+  background: var(--paper);
+  page-break-after: always;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+.page-head {
+  display: grid;
+  grid-template-columns: 42mm 1fr;
+  gap: 10mm;
+  align-items: start;
+  margin-bottom: 10mm;
+}
+
+.page-head.compact {
+  display: block;
+  margin-bottom: 7mm;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--gold);
+  font-size: 10pt;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 48pt;
+  line-height: 0.95;
+}
+
+h2 {
+  max-width: 190mm;
+  font-size: 26pt;
+  line-height: 1.18;
+}
+
+h3 {
+  font-size: 15pt;
+  line-height: 1.3;
+}
+
+p,
+li {
+  color: var(--muted);
+  font-size: 10.5pt;
+  line-height: 1.7;
+}
+
+.cover-page {
+  padding: 0;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.cover-bg,
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-bg {
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.cover-overlay {
+  background:
+    linear-gradient(90deg, rgba(13, 21, 20, 0.9) 0%, rgba(13, 21, 20, 0.58) 58%, rgba(13, 21, 20, 0.14) 100%),
+    linear-gradient(0deg, rgba(13, 21, 20, 0.62), rgba(13, 21, 20, 0.05));
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  width: 185mm;
+  padding: 24mm 0 0 18mm;
+}
+
+.cover-page h2 {
+  margin-top: 4mm;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28pt;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  gap: 8mm;
+  align-items: center;
+  margin-top: 12mm;
+}
+
+.profile-row img,
+.contact-card img {
+  width: 30mm;
+  height: 38mm;
+  border-radius: 4mm;
+  object-fit: cover;
+  background: var(--white);
+}
+
+.profile-row strong,
+.profile-row span {
+  display: block;
+}
+
+.profile-row strong {
+  margin-bottom: 2mm;
+  font-size: 15pt;
+}
+
+.profile-row span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11pt;
+  line-height: 1.7;
+}
+
+.cover-summary {
+  max-width: 170mm;
+  margin-top: 12mm;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 13pt;
+  line-height: 1.7;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3mm;
+  margin-top: 10mm;
+}
+
+.tag-row span {
+  min-height: 9mm;
+  padding: 2.2mm 4mm;
+  border: 0.35mm solid rgba(255, 255, 255, 0.28);
+  border-radius: 2mm;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 9.5pt;
+  font-weight: 800;
+}
+
+.fit-layout,
+.final-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5mm;
+}
+
+.fit-layout article,
+.stage-grid article,
+.research-cards article,
+.teaching-cards article,
+.final-grid article {
+  padding: 6mm;
+  border: 0.35mm solid var(--line);
+  border-radius: 3mm;
+  background: var(--white);
+}
+
+.fit-layout span,
+.stage-grid span {
+  color: var(--red);
+  font-size: 9.5pt;
+  font-weight: 900;
+}
+
+.fit-layout h3,
+.stage-grid h3,
+.research-cards h3,
+.teaching-cards h3,
+.final-grid h3 {
+  margin-top: 2mm;
+}
+
+.fit-layout p,
+.stage-grid p,
+.research-cards p,
+.teaching-cards p,
+.final-grid p {
+  margin-top: 3mm;
+}
+
+.quote-band {
+  display: grid;
+  grid-template-columns: 36mm 1fr;
+  gap: 8mm;
+  align-items: center;
+  margin-top: 8mm;
+  padding: 6mm 7mm;
+  border-left: 1.4mm solid var(--red);
+  background: #eaf1ec;
+}
+
+.quote-band strong {
+  color: var(--green);
+  font-size: 14pt;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4.5mm;
+}
+
+.stage-grid article {
+  min-height: 31mm;
+  padding: 5mm;
+}
+
+.stage-grid .wide {
+  grid-column: 1 / -1;
+  min-height: 25mm;
+  background: #eaf1ec;
+}
+
+.split-page {
+  display: grid;
+  grid-template-columns: 1fr 126mm;
+  gap: 11mm;
+  align-items: center;
+}
+
+.lead {
+  margin-bottom: 7mm;
+  color: var(--ink);
+  font-size: 12pt;
+  line-height: 1.75;
+}
+
+.bullet-list {
+  display: grid;
+  gap: 3mm;
+  padding-left: 5mm;
+  margin: 0;
+}
+
+.bullet-list li::marker {
+  color: var(--green);
+}
+
+.image-card {
+  margin: 0;
+  overflow: hidden;
+  border: 0.35mm solid var(--line);
+  border-radius: 3mm;
+  background: var(--white);
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  height: 118mm;
+  object-fit: contain;
+  background: #f2f5f7;
+}
+
+.image-card figcaption,
+.photo-strip figcaption {
+  padding: 3mm 4mm;
+  color: var(--muted);
+  font-size: 9pt;
+}
+
+.research-layout {
+  display: grid;
+  grid-template-columns: 112mm 1fr;
+  gap: 8mm;
+}
+
+.photo-strip {
+  display: grid;
+  gap: 4mm;
+}
+
+.photo-strip figure {
+  margin: 0;
+  overflow: hidden;
+  border: 0.35mm solid var(--line);
+  border-radius: 3mm;
+  background: var(--white);
+}
+
+.photo-strip img {
+  display: block;
+  width: 100%;
+  height: 30mm;
+  object-fit: cover;
+}
+
+.research-cards,
+.teaching-cards {
+  display: grid;
+  gap: 5mm;
+}
+
+.teaching-layout {
+  display: grid;
+  grid-template-columns: 128mm 1fr;
+  gap: 9mm;
+  align-items: start;
+}
+
+.teaching-page .image-card img {
+  height: 112mm;
+  object-fit: contain;
+  background: var(--white);
+}
+
+.final-page {
+  display: grid;
+  align-content: center;
+}
+
+.final-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 34mm 1fr;
+  gap: 8mm;
+  align-items: center;
+  margin-top: 12mm;
+  padding: 8mm;
+  border-radius: 3mm;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.contact-card img {
+  width: 34mm;
+  height: 43mm;
+}
+
+.contact-card h3 {
+  margin-bottom: 2mm;
+  font-size: 20pt;
+}
+
+.contact-card p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11pt;
+}
+
+@media print {
+  html,
+  body {
+    width: 297mm;
+    background: var(--white);
+  }
+
+  .deck {
+    display: block;
+    padding: 0;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+}
